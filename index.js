@@ -1,15 +1,15 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000;
 const BASE_API_PATH = "/api/v1";
 
 var bodyParser = require('body-parser')
-var Datastore = require('nedb')
+var Datastore = require('nedb');
 db = new Datastore('');
 
-var jsonParser = bodyParser.json()
+var jsonParser = bodyParser.json();
 
-app.get('/', (req, res) => res.send('My contacts'))
+app.get('/', (req, res) => res.send('My contacts'));
 
 // API CRUD METHOD
 
@@ -40,7 +40,7 @@ app.get(BASE_API_PATH + "/contact/:name", (req, res) => {
 app.delete(BASE_API_PATH + "/contacts", (req, res) => {
     console.log(Date() + " - DELETE /contacts/")
     db.remove({}, function (err, docs) {
-        res.sendStatus(200)
+        res.sendStatus(200);
     });
 });
 
@@ -51,7 +51,7 @@ app.delete(BASE_API_PATH + "/contact/:name", (req, res) => {
     const contactName = req.params.name;
     db.remove({name: contactName}, function (err, contactFound) {
         if(contactFound){
-            res.sendStatus(200)
+            res.sendStatus(200);
         } else {
             res.send("Contact " + contactName + " does not exist");
         }
@@ -61,7 +61,7 @@ app.delete(BASE_API_PATH + "/contact/:name", (req, res) => {
 //// POST CONTACT
 app.post(BASE_API_PATH + "/contact", jsonParser, (req, res) => {
     console.log(Date() + " - POST /contact/" + req.body.name)
-    var contact = req.body
+    var contact = req.body;
     db.insert(contact, function (err, newDoc) {
     });
     res.sendStatus(201);
@@ -70,7 +70,7 @@ app.post(BASE_API_PATH + "/contact", jsonParser, (req, res) => {
 //// PUT CONTACT
 app.put(BASE_API_PATH + "/contact", jsonParser, (req, res) => {
     console.log(Date() + " - PUT /contact/" + req.body.name)
-    var contact = req.body
+    var contact = req.body;
     db.update({'name': contact.name}, contact, function (err, docs) {
     });
     res.sendStatus(201);
