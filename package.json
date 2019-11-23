@@ -1,0 +1,20 @@
+{
+  "name": "contacts",
+  "version": "1.0.0",
+  "description": "Contacts API",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jorgegaguilar/contacts-fsi.git"
+  },
+  "homepage": "https://github.com/jorgegaguilar/contacts-fsi",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Gray",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
+}
