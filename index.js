@@ -78,4 +78,4 @@ app.put(BASE_API_PATH + "/contact", jsonParser, (req, res) => {
 
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Contacts API is running on port: ${port}!`))
